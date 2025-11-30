@@ -42,5 +42,3 @@ After you type a guess, the letters will change color:
 
 *Have fun guessing\!*
 
-```
-```
