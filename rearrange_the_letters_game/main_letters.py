@@ -18,15 +18,16 @@ def timer(seconds):
     time_up_event.set()
     print("Time's up!")
 
-time_up_event = threading.Event()
-threading.Thread(target=timer, args=(30,), daemon=True).start()
-
 
 words = load_dictionary("5_letter_words.txt")
 secret_word = random.choice(words)
 
 print("The shuffled word is: ", shuffle_word(secret_word))
 print("Rearrange the letters to form the correct word: ")
+
+time_up_event = threading.Event()
+threading.Thread(target=timer, args=(30,), daemon=True).start() #daemon -> quit if nothing else is running or keep it running
+
 
 word = input()
 
