@@ -7,6 +7,7 @@ A collection of wordle-inspired games that run in your terminal.
 
 1.  **Classic Wordle**: Guess the 5-letter English word.
 2.  **Guess the Fruit**: Guess the name of the fruit (various lengths).
+3.  **Rearrange The Letters**: Form the correct word
 
 ## 📸 Gameplay Example
 Here is what the "Guess the Fruit" mode looks like:
