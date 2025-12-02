@@ -1,6 +1,7 @@
 import random
 import threading
-import os
+import queue
+import time
 
 #each line contains one word
 def load_dictionary(file_path):
@@ -13,10 +14,18 @@ def shuffle_word(word):
     random.shuffle(char_list)
     return ''.join(char_list)
 
+def input_thread():
+    while not time_up_event.is_set():
+        try:
+            user_input = input()
+        except EOFError:
+            break
+        input_queue.put(user_input)
+
 def timer(seconds):
-    threading.Event().wait(seconds) #wait
-    time_up_event.set() #signal that time is up
-    print("Time's up!")
+    time.sleep(seconds)
+    time_up_event.set()
+    print("\nTime's up!")
 
 
 words = load_dictionary("5_letter_words.txt")
@@ -26,16 +35,22 @@ print("The shuffled word is: ", shuffle_word(secret_word))
 print("Rearrange the letters to form the correct word: ")
 
 time_up_event = threading.Event()
+input_queue = queue.Queue()
+threading.Thread(target=input_thread).start() #do not add daemon to avoid error
 threading.Thread(target=timer, args=(30,), daemon=True).start() #daemon -> quit if nothing else is running or keep it running
 
 ok = False
+# multiple guesses allowed
 while not time_up_event.is_set():
-    word = input()
-    if word == secret_word:
-        ok = True
-        break
+    try:
+        word = input_queue.get_nowait()
+        if word == secret_word:
+            ok = True
+            break
+    except queue.Empty:
+        time.sleep(0.05)
 
-if time_up_event.is_set(): #check if time is up
+if time_up_event.is_set() and not ok: #check if time is up
     print("You ran out of time!")
 if ok:
     print("Correct! You guessed it! ", secret_word)
