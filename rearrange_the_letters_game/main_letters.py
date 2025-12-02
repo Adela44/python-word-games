@@ -2,6 +2,7 @@ import random
 import threading
 import queue
 import time
+import os
 
 #each line contains one word
 def load_dictionary(file_path):
@@ -36,7 +37,7 @@ print("Rearrange the letters to form the correct word: ")
 
 time_up_event = threading.Event()
 input_queue = queue.Queue()
-threading.Thread(target=input_thread).start() #do not add daemon to avoid error
+threading.Thread(target=input_thread).start()
 threading.Thread(target=timer, args=(30,), daemon=True).start() #daemon -> quit if nothing else is running or keep it running
 
 ok = False
@@ -57,5 +58,6 @@ if ok:
 else:
     print("Not the right word, the correct one was: ", secret_word)
 
-
+#forcing the program to exit
+os._exit(0)
 
