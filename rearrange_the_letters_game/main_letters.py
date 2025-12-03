@@ -7,10 +7,9 @@ import sys # sys.exit(1) instead of exit()
 
 """
 checklist of what to improve:
-   - file not found error -> try/except around load_dictionary
    - missing feedback if the user's input is incorrect (the program just loops silently)
-   - better feedback and instructions or other output messages 
-   - complete the documentation
+   - better feedback and instructions or other output messages (eg. it's about 5 letter words - should be the first message)
+   - complete the documentation (update README.md)
 """
 
 #each line contains one word
