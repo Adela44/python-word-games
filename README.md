@@ -14,7 +14,7 @@ Here is what the "Guess the Fruit" mode looks like:
 
 ![Gameplay Screenshot](gameplay.png)
 
-## 📝 Rules & Colors
+## Rules & Colors
 
 After you type a guess, the letters will change color:
 
