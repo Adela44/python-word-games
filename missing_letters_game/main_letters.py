@@ -16,7 +16,7 @@ def is_valid_guess(guess, guesses):
     return guess in guesses # check if the word exists in the guesses list
 
 def missing_letters(guesses):
-    print("Welcome to Missing Letters! You have 3 chances to guess the word that fits the missing letters.")
+    print("Welcome to Missing Letters! You have 5 chances to guess the 6-letter-word secret word that fits")
     list1 = [0,1,2,3,4,5]
     target_word = random.choice(guesses)
     temp_list = list(target_word)
@@ -28,11 +28,11 @@ def missing_letters(guesses):
     display_word = "".join(temp_list)
     print("Here's your word: ", display_word)
     attempts = 1
-    max_attempts = 3
+    max_attempts = 5
     while attempts <= max_attempts:
         guess = input("Enter Guess #" + str(attempts) + ": ").lower() #makes the letter lowercase
         if guess not in guesses:
-            print("Invalid guess. Please enter an English Word with 6 letters or a more common one")
+            print("Invalid guess. Please enter a valid 6-letter-word or a more common one")
         if guess == target_word: # the correct guess
             print("You guessed the word! Congratulations! ",target_word)
             break
