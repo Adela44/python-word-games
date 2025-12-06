@@ -1,4 +1,5 @@
 import random
+import sys
 
 """
 
@@ -11,9 +12,13 @@ RESET = "\033[0m"
 
 # each line contains one word
 def load_dictionary(file_path):
-    with open(file_path) as f:
-        words = [line.strip() for line in f]
-    return words
+    try:
+        with open(file_path) as f:
+            words = [line.strip() for line in f]
+        return words
+    except FileNotFoundError:
+        print(f"Error: The file '{file_path}' was not found.")
+        sys.exit(1)
 
 def is_valid_guess(guess, guesses):
     return guess in guesses # check if the word exists in the guesses list
