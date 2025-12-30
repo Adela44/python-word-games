@@ -11,12 +11,8 @@ def load_dictionary(file_path):
         print(f"Error: The file '{file_path}' was not found.")
         sys.exit(1)
 
-"""
-    Obs: We sort the letters because words that are anagrams always have the same letter,
-    just in different order -> we can use the sorted word as a key, to group the anagrams 
-    together
-"""
 
+#we can use the sorted word as a key, to group the anagrams together
 def generate_anagram_groups(words):
     groups = defaultdict(list) #list()  →  []
 
