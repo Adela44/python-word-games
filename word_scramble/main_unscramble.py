@@ -23,7 +23,6 @@ def shuffle_word(word):
     random.shuffle(char_list)
     return ''.join(char_list)
 
-#if guess exists in the word list and has the same letters as the original
 def unscramble(words):
     print("This is Word Scramble! You have 3 chances to guess the correct word")
     secret_word = random.choice(list(words.keys()))
