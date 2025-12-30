@@ -1,4 +1,5 @@
 import sys
+import random
 from collections import defaultdict
 
 def load_dictionary(file_path):
@@ -17,7 +18,7 @@ def load_dictionary(file_path):
 """
 
 def generate_anagram_groups(words):
-    groups = defaultdict(list)
+    groups = defaultdict(list) #list()  →  []
 
     for word in words:
         key = ''.join(sorted(word))  #eg. sorted("listen") -> ['e', 'i', 'l', 'n', 's', 't']
@@ -31,7 +32,28 @@ def generate_anagram_groups(words):
 
     return filtered
 
+def anagram_finder(anagrams):
+    secret_key = random.choice(list(anagrams.keys()))
+    print("Welcome to anagram finder! Given a 5-letter word, try to guess one of its valid anagrams \n You only have 3 chances")
+    word1 = random.choice(anagrams[secret_key])
+    print(word1)
+    attempts = 1
+    max_attempts = 3
+    while attempts <= max_attempts:
+        guess = input("Enter Guess #" + str(attempts) + ": ").lower()
+        if guess in anagrams[secret_key] and guess != word1:
+            print("Congratulations, you guessed the anagram!")
+        attempts = attempts + 1
+    if attempts > max_attempts:
+        print("Too many attempts, here's the list of anagrams:")
+        print(anagrams[secret_key])
+    return
+
 words = load_dictionary("5-letter-words.txt")
 anagrams = generate_anagram_groups(words)
+anagram_finder(anagrams)
+
+"""
 for key, group in anagrams.items():
-    print(group)
+    print(key,group)
+"""
