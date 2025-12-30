@@ -52,8 +52,3 @@ def anagram_finder(anagrams):
 words = load_dictionary("5-letter-words.txt")
 anagrams = generate_anagram_groups(words)
 anagram_finder(anagrams)
-
-"""
-for key, group in anagrams.items():
-    print(key,group)
-"""
