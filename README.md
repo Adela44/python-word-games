@@ -13,7 +13,7 @@ A collection of wordle-inspired games that run in your terminal.
 ## Gameplay Example
 Here is what the "Guess the Fruit" mode looks like:
 
-![Gameplay Screenshot](gameplay.png)
+![gameplay_guess_the_fruit.png](gameplay_guess_the_fruit.png)
 
 ## Rules & Colors
 
