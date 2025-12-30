@@ -30,7 +30,7 @@ def evaluate_guess(guess, word):  # return green/yellow/grey letters accordingly
         if i < len(word) and guess[i] == word[i]: #if it's in the correct location
             str += "\033[32m" + guess[i]
         else:
-            if guess[i] in word: # if the word contains the correct letter
+            if guess[i] in word and guess[i] not in str: # if the word contains the correct letter
                 str += "\033[33m" + guess[i]
             else:
                 str += "\033[0m" + guess[i] # the normal color, grey-ish
